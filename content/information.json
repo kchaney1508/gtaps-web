@@ -1,0 +1,42 @@
+﻿[
+  {
+    "slug": "rules",
+    "title": "Rules Placeholder",
+    "date": "",
+    "summary": "Placeholder summary for server/community rules.",
+    "body": "Placeholder rules text. Replace with your official policy details.",
+    "tags": ["policy"]
+  },
+  {
+    "slug": "commands",
+    "title": "Commands Placeholder",
+    "date": "",
+    "summary": "Placeholder summary for useful in-game command references.",
+    "body": "Placeholder command list. Add descriptions and examples.",
+    "tags": ["guide", "commands"]
+  },
+  {
+    "slug": "how-to-join",
+    "title": "How To Join Placeholder",
+    "date": "",
+    "summary": "Placeholder summary for onboarding instructions.",
+    "body": "Placeholder join steps. Add requirements and verification flow.",
+    "tags": ["onboarding"]
+  },
+  {
+    "slug": "faq",
+    "title": "FAQ Placeholder",
+    "date": "",
+    "summary": "Placeholder summary for common questions.",
+    "body": "Placeholder frequently asked questions and answers.",
+    "tags": ["help"]
+  },
+  {
+    "slug": "staff-structure",
+    "title": "Staff Structure Placeholder",
+    "date": "",
+    "summary": "Placeholder summary for team roles and responsibilities.",
+    "body": "Placeholder staff structure content. Replace with rank and role details.",
+    "tags": ["team"]
+  }
+]
