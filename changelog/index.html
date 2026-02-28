@@ -1,39 +1,29 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Changelog | GTA:PS</title>
-  <link rel="stylesheet" href="/assets/styles.css">
-</head>
-<body data-page="changelog-list">
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">GTA:PS</a>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/changelog/">Changelog</a>
-        <a href="/information/">Information</a>
-        <a href="/discord">Discord</a>
-      </nav>
-    </div>
-  </header>
+---
+title: Changelog
+permalink: /changelog/
+---
+<h1>Changelog</h1>
 
-  <main class="container">
-    <h1>Changelog</h1>
-    <p>Placeholder text for updates, release notes, and newsletter-style posts.</p>
-    <section id="list-root" class="list" aria-live="polite">
-      <p class="status">Loading changelog posts...</p>
-    </section>
-  </main>
+{% assign dated_posts = site.changelog | where_exp: "entry", "entry.published_on" | sort: "published_on" | reverse %}
+{% assign undated_posts = site.changelog | where_exp: "entry", "entry.published_on == nil" | sort: "title" %}
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>Not affiliated with Rockstar Games or Take-Two Interactive.</p>
-      <p>&copy; <span data-current-year></span> GTA:PS</p>
-    </div>
-  </footer>
+<section class="list">
+  {% for entry in dated_posts %}
+  <article class="item-card">
+    <h2><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></h2>
+    <p class="item-meta">{{ entry.published_on | date: "%b %-d, %Y" }}</p>
+    <p>{{ entry.summary | default: "Placeholder summary text." }}</p>
+  </article>
+  {% endfor %}
 
-  <script src="/assets/app.js" defer></script>
-</body>
-</html>
+  {% for entry in undated_posts %}
+  <article class="item-card">
+    <h2><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></h2>
+    <p>{{ entry.summary | default: "Placeholder summary text." }}</p>
+  </article>
+  {% endfor %}
+
+  {% if dated_posts.size == 0 and undated_posts.size == 0 %}
+  <p class="status">No entries yet.</p>
+  {% endif %}
+</section>

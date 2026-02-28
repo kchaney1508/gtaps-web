@@ -1,103 +1,133 @@
-﻿# GTA:PS Static Site
+# GTA:PS Static Site (Jekyll)
 
-Simple static website for GTA:PS (Grand Theft Auto Police Simulator), designed for GitHub Pages + custom domain `gtaps.site`.
+Simple static website for GTA:PS (Grand Theft Auto Police Simulator), set up for GitHub Pages + custom domain `gtaps.site`.
 
 ## File Structure
 
 ```text
 /
+  _config.yml
+  Gemfile
   index.html
   404.html
+  CNAME
+  /assets/
+    styles.css
+    app.js
+  /_layouts/
+    default.html
+    detail.html
+    redirect.html
+  /_data/
+    redirects.yml
+  /_changelog/
+    <slug>.md
+  /_information/
+    <slug>.md
   /changelog/
     index.html
   /information/
     index.html
-  /assets/
-    styles.css
-    app.js
-  /content/
-    changelog.json
-    information.json
-    redirects.json
-  README.md
-  CNAME
+  /discord/
+    index.html
+  /server/
+    index.html
 ```
 
-## Manage Changelog Posts
+## Add/Edit A Changelog Post
 
-Edit `content/changelog.json`.
+Create or edit a file in `_changelog/`.
 
-Each item should follow this structure:
+Example: `_changelog/11-12-25.md`
 
-```json
-{
-  "slug": "11-12-25",
-  "title": "Placeholder title",
-  "date": "2025-11-12",
-  "summary": "Placeholder summary",
-  "body": "Plain text with newlines OR simple HTML string",
-  "tags": ["optional", "tags"]
-}
+```markdown
+---
+title: Placeholder Update 11-12-25
+published_on: 2025-11-12
+summary: Placeholder summary
+---
+Post body content goes here.
 ```
 
 Notes:
-- `slug` must be unique.
-- `date` is optional, but recommended.
-- List page is sorted by newest date first. Missing dates are placed last.
+- Filename is the slug (`11-12-25.md` -> `/changelog/11-12-25/`).
+- Use Markdown in the body.
+- `published_on` is optional. If omitted, the post is listed after dated posts.
+- Changelog list sorts newest `published_on` first, then undated posts last.
 
-## Manage Information Pages
+## Add/Edit An Information Page
 
-Edit `content/information.json`.
+Create or edit a file in `_information/`.
 
-Each item uses the same fields:
+Example: `_information/rules.md`
 
-```json
-{
-  "slug": "rules",
-  "title": "Placeholder title",
-  "date": "",
-  "summary": "Placeholder summary",
-  "body": "Placeholder body",
-  "tags": []
-}
+```markdown
+---
+title: Rules Placeholder
+summary: Placeholder summary
+---
+Information page body goes here.
 ```
 
 Notes:
-- `slug` must be unique.
-- Information list is sorted alphabetically by `title`.
+- Filename is the slug (`rules.md` -> `/information/rules/`).
+- Information list sorts alphabetically by title.
 
-## Manage Short Redirects
+## Add/Edit A Redirect
 
-Edit `content/redirects.json`:
+1. Edit `_data/redirects.yml`.
+2. Add or update the key URL mapping.
+3. Ensure a matching page exists at `/<key>/index.html` with `redirect_key: <key>`.
 
-```json
-{
-  "discord": "https://discord.com/invite/REPLACE_ME",
-  "server": "https://example.com/REPLACE_ME"
-}
+Current examples:
+- `/discord/` -> `discord`
+- `/server/` -> `server`
+
+## Local Development (Like GitHub Pages)
+
+### Option A: Ruby + Bundler
+
+1. Install Ruby + Bundler.
+2. Run:
+
+```bash
+bundle install
+bundle exec jekyll serve
 ```
 
-Examples:
-- `/discord` redirects to the `discord` URL.
-- `/server` redirects to the `server` URL.
+3. Open `http://127.0.0.1:4000`.
 
-## Routing Behavior (GitHub Pages)
+### Option B: Docker
 
-- Known routes `/changelog/<slug>` and `/information/<slug>` are rendered by `404.html` + `assets/app.js`.
-- Short routes like `/discord` are handled by `redirects.json`.
-- Unknown routes redirect to `/` (homepage).
+```bash
+docker run --rm -it -p 4000:4000 -v "$PWD:/srv/jekyll" --entrypoint jekyll jekyll/jekyll:4 serve --host 0.0.0.0 --port 4000 --watch
+```
+
+Then open `http://127.0.0.1:4000`.
+
+Windows `cmd.exe` helper:
+
+```bat
+start.bat
+```
 
 ## GitHub Pages + Custom Domain Setup
 
-1. Push this repository to GitHub.
-2. In GitHub repository settings, open **Pages**.
-3. Set source to deploy from the main branch root (`/`).
-4. Confirm the custom domain is `gtaps.site`.
-5. Keep the `CNAME` file in the repository with this exact value:
+1. Push repository to GitHub.
+2. In repo settings, open **Pages**.
+3. Set source to deploy from your main branch root.
+4. Set custom domain to `gtaps.site`.
+5. Keep `CNAME` in the repo with exactly:
 
 ```text
 gtaps.site
 ```
 
-6. At your DNS provider, point `gtaps.site` to GitHub Pages records.
-7. Wait for DNS + certificate provisioning to finish in GitHub Pages settings.
+6. Configure DNS for `gtaps.site` to GitHub Pages.
+7. Wait for DNS + certificate provisioning.
+
+## Routing Behavior
+
+- Real pages exist for `/changelog/<slug>/` and `/information/<slug>/` via Jekyll collections.
+- Real redirect pages exist for `/discord/` and `/server/`.
+- Unknown routes load `404.html`, which redirects to homepage.

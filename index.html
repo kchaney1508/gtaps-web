@@ -1,46 +1,103 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GTA:PS</title>
-  <link rel="stylesheet" href="/assets/styles.css">
-</head>
-<body data-page="home">
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">GTA:PS</a>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/changelog/">Changelog</a>
-        <a href="/information/">Information</a>
-        <a href="/discord">Discord</a>
-      </nav>
-    </div>
-  </header>
+---
+title: GTA:PS
+---
+<section class="hero hero-home">
+  <div class="hero-copy">
+    <h1 class="visually-hidden">GTA:PS</h1>
+    <p class="hero-kicker">Grand Theft Auto Police Simulator</p>
+    <p class="hero-lead">
+      Placeholder space for your community pitch, onboarding summary, and the first few reasons
+      someone should stick around and explore the site.
+    </p>
+    <p class="hero-support">
+      Use this area for a short overview of the server, what players can expect, and where they
+      should go first once they land here.
+    </p>
+    <section class="dispatch-widget" id="dispatch-widget" aria-label="Dispatch preview">
+      <noscript>
+        <style>
+          #dispatch-interactive {
+            display: none;
+          }
+        </style>
+        <div class="dispatch-fallback">
+          <h2 class="dispatch-title">Dispatch Preview Offline</h2>
+          <p class="dispatch-copy">
+            There was a super cool thing here, but JavaScript is off, so now it is just a fancy
+            box. Brutal.
+          </p>
+        </div>
+      </noscript>
 
-  <main class="container">
-    <section class="hero">
-      <h1>GTA:PS</h1>
-      <p>
-        Placeholder description for Grand Theft Auto Police Simulator. Replace this with your real
-        community introduction, highlights, and onboarding details.
-      </p>
-      <div class="actions">
-        <a class="button" href="/changelog/">View Changelog</a>
-        <a class="button" href="/information/">View Information</a>
-        <a class="button" href="/discord">Join Discord</a>
+      <div id="dispatch-interactive">
+        <div class="dispatch-head">
+          <div>
+            <p class="dispatch-label">Dispatch Preview</p>
+            <p class="dispatch-intro">
+              Generate a sample callout using example incidents.
+            </p>
+          </div>
+          <button class="button button-compact" id="dispatch-refresh" type="button">New Call</button>
+        </div>
+
+        <div class="dispatch-content" aria-live="polite" aria-atomic="true">
+          <h2 class="dispatch-title" id="dispatch-call-type">Dispatch Loading</h2>
+          <p class="dispatch-location" id="dispatch-location">Selecting a location...</p>
+          <p class="dispatch-copy" id="dispatch-summary">
+            Pulling a sample call so this area feels more like a live patrol board than a placeholder.
+          </p>
+          <p class="dispatch-response" id="dispatch-response">Suggested response: Stand by.</p>
+          <p class="dispatch-notes" id="dispatch-notes">Field notes will appear here.</p>
+        </div>
       </div>
     </section>
-  </main>
+  </div>
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>Not affiliated with Rockstar Games or Take-Two Interactive.</p>
-      <p>&copy; <span data-current-year></span> GTA:PS</p>
+  <aside class="home-panel" aria-label="Quick start">
+    <p class="panel-label">Quick Start</p>
+    <div class="home-stack">
+      <a class="home-link-card" href="{{ '/information/' | relative_url }}">
+        <strong>Read The Basics</strong>
+        <span>Point new visitors toward rules, joining steps, commands, or whatever should come first.</span>
+      </a>
+      <a class="home-link-card" href="{{ '/changelog/' | relative_url }}">
+        <strong>Check Recent Updates</strong>
+        <span>Use this card to highlight patches, announcements, or community news at a glance.</span>
+      </a>
+      <a class="home-link-card" href="{{ '/discord/' | relative_url }}">
+        <strong>Join The Community</strong>
+        <span>Use the Discord link as your primary next step for onboarding, support, or announcements.</span>
+      </a>
     </div>
-  </footer>
+  </aside>
+</section>
 
-  <script src="/assets/app.js" defer></script>
-</body>
-</html>
+<section class="home-grid" aria-label="Homepage highlights">
+  <a class="home-card" href="{{ '/changelog/' | relative_url }}">
+    <p class="home-card-kicker">Updates</p>
+    <h2>Keep the changelog current</h2>
+    <p>
+      Use this card as a standing reminder that updates, feature notes, and server changes should
+      stay easy to find.
+    </p>
+  </a>
+
+  <a class="home-card" href="{{ '/information/' | relative_url }}">
+    <p class="home-card-kicker">Information</p>
+    <h2>Point players in the right direction</h2>
+    <p>
+      Use this section for onboarding references, rules, FAQs, command guides, or anything players
+      need before they ask staff.
+    </p>
+  </a>
+
+  <a class="home-card" href="{{ '/discord/' | relative_url }}">
+    <p class="home-card-kicker">Community</p>
+    <h2>Keep the next step obvious</h2>
+    <p>
+      Use the homepage to make the next action clear, whether that is joining Discord, reading
+      updates, or checking server requirements.
+    </p>
+  </a>
+</section>
+

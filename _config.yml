@@ -1,0 +1,32 @@
+title: GTA:PS
+url: https://gtaps.site
+baseurl: ""
+permalink: pretty
+markdown: kramdown
+
+collections:
+  changelog:
+    output: true
+    permalink: /changelog/:name/
+  information:
+    output: true
+    permalink: /information/:name/
+
+defaults:
+  - scope:
+      path: ""
+    values:
+      layout: default
+  - scope:
+      path: ""
+      type: changelog
+    values:
+      layout: detail
+      section: changelog
+  - scope:
+      path: ""
+      type: information
+    values:
+      layout: detail
+      section: information
+

@@ -1,39 +1,21 @@
-﻿<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Information | GTA:PS</title>
-  <link rel="stylesheet" href="/assets/styles.css">
-</head>
-<body data-page="information-list">
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="/">GTA:PS</a>
-      <nav class="site-nav" aria-label="Main navigation">
-        <a href="/">Home</a>
-        <a href="/changelog/">Changelog</a>
-        <a href="/information/">Information</a>
-        <a href="/discord">Discord</a>
-      </nav>
-    </div>
-  </header>
+---
+title: Information
+permalink: /information/
+---
+<h1>Information</h1>
 
-  <main class="container">
-    <h1>Information</h1>
-    <p>Placeholder text for rules, guides, commands, and other helpful pages.</p>
-    <section id="list-root" class="list" aria-live="polite">
-      <p class="status">Loading information pages...</p>
-    </section>
-  </main>
+{% assign info_pages = site.information | sort: "title" %}
 
-  <footer class="site-footer">
-    <div class="container">
-      <p>Not affiliated with Rockstar Games or Take-Two Interactive.</p>
-      <p>&copy; <span data-current-year></span> GTA:PS</p>
-    </div>
-  </footer>
+<section class="list">
+  {% for entry in info_pages %}
+  <article class="item-card">
+    <h2><a href="{{ entry.url | relative_url }}">{{ entry.title }}</a></h2>
+    <p>{{ entry.summary | default: "Placeholder summary text." }}</p>
+  </article>
+  {% endfor %}
 
-  <script src="/assets/app.js" defer></script>
-</body>
-</html>
+  {% if info_pages.size == 0 %}
+  <p class="status">No entries yet.</p>
+  {% endif %}
+</section>
+

@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page.title | default: 'Redirect' }} | GTA:PS</title>
+  <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
+  {% assign target = site.data.redirects[page.redirect_key] %}
+  {% if target %}
+  <meta http-equiv="refresh" content="0; url={{ target }}">
+  {% endif %}
+</head>
+<body data-page="redirect">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="{{ '/' | relative_url }}" aria-label="GTA:PS home">
+        <img class="brand-logo brand-logo--mobile" src="{{ '/gtaps.png' | relative_url }}" alt="">
+        <img class="brand-logo brand-logo--desktop" src="{{ '/gtaps-desktop.png' | relative_url }}" alt="" onerror="this.onerror=null;this.src='{{ '/gtaps.png' | relative_url }}';">
+        <span class="visually-hidden">GTA:PS</span>
+      </a>
+      <nav class="site-nav" aria-label="Main navigation">
+        <a href="{{ '/' | relative_url }}">Home</a>
+        <a href="{{ '/changelog/' | relative_url }}">Changelog</a>
+        <a href="{{ '/information/' | relative_url }}">Information</a>
+        <a href="{{ '/discord/' | relative_url }}"{% if page.redirect_key == 'discord' %} class="is-active"{% endif %}>Discord</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="status">
+      <h1>{{ page.title | default: 'Redirect' }}</h1>
+      {% if target %}
+      <p>Redirecting...</p>
+      <p><a href="{{ target }}">Continue</a></p>
+      {% else %}
+      <p>Redirect target is missing for this page.</p>
+      <p><a href="{{ '/' | relative_url }}">Go Home</a></p>
+      {% endif %}
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>{{ 'now' | date: '%Y' }} &copy; GTA:PS</p>
+      <p>Not affiliated with Take-Two Interactive</p>
+    </div>
+  </footer>
+
+  {% if target %}
+  <script>
+    window.location.replace({{ target | jsonify }});
+  </script>
+  {% endif %}
+</body>
+</html>

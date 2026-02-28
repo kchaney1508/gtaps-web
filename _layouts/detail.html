@@ -1,0 +1,22 @@
+---
+layout: default
+---
+<div class="detail-page">
+  {% if page.collection == 'changelog' %}
+  <a class="detail-back" href="{{ '/changelog/' | relative_url }}">Back to Changelog</a>
+  {% elsif page.collection == 'information' %}
+  <a class="detail-back" href="{{ '/information/' | relative_url }}">Back to Information</a>
+  {% endif %}
+
+  <article class="detail-view">
+    <h1>{{ page.title }}</h1>
+
+    {% if page.published_on %}
+    <p class="item-meta">{{ page.published_on | date: "%b %-d, %Y" }}</p>
+    {% endif %}
+
+    <div class="detail-body">
+      {{ content }}
+    </div>
+  </article>
+</div>
