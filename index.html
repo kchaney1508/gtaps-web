@@ -1,10 +1,11 @@
 ---
 title: GTA:PS
+page_id: home
 ---
 <section class="hero hero-home">
   <div class="hero-copy">
     <h1 class="visually-hidden">GTA:PS</h1>
-    <p class="hero-kicker">Grand Theft Auto Police Simulator</p>
+    <p class="hero-kicker">Community</p>
     <p class="hero-lead">
       Placeholder space for your community pitch, onboarding summary, and the first few reasons
       someone should stick around and explore the site.
@@ -72,32 +73,50 @@ title: GTA:PS
   </aside>
 </section>
 
-<section class="home-grid" aria-label="Homepage highlights">
-  <a class="home-card" href="{{ '/changelog/' | relative_url }}">
-    <p class="home-card-kicker">Updates</p>
-    <h2>Keep the changelog current</h2>
-    <p>
-      Use this card as a standing reminder that updates, feature notes, and server changes should
-      stay easy to find.
+<section class="home-brief home-brief--live" aria-label="Development brief">
+  <div class="home-brief-main">
+    <div class="home-brief-meta">
+      <p class="home-card-kicker">Development Brief</p>
+    </div>
+    <p class="home-brief-message">
+      <span>Server Team:</span> Use this line for a short direct message about what is happening
+      right now, what changed recently, or what players should pay attention to next.
     </p>
-  </a>
+    <div class="home-brief-status" aria-label="Development status">
+      <div class="brief-metric-row">
+        <div class="brief-metric">
+          <span>Build</span>
+          <strong>v1.0.0</strong>
+        </div>
+        <div class="brief-metric">
+          <span>Last Update</span>
+          <strong>March 1st, 2026</strong>
+        </div>
+        <div class="brief-metric">
+          <span>Next Update</span>
+          <strong>April 2026</strong>
+        </div>
+      </div>
 
-  <a class="home-card" href="{{ '/information/' | relative_url }}">
-    <p class="home-card-kicker">Information</p>
-    <h2>Point players in the right direction</h2>
-    <p>
-      Use this section for onboarding references, rules, FAQs, command guides, or anything players
-      need before they ask staff.
-    </p>
-  </a>
+      <div class="brief-note-strip">
+        <strong>Current Objective</strong>
+        <span>Use this area for the main active goal, release target, or the most important thing your team is currently pushing toward.</span>
+      </div>
+    </div>
+  </div>
 
-  <a class="home-card" href="{{ '/discord/' | relative_url }}">
-    <p class="home-card-kicker">Community</p>
-    <h2>Keep the next step obvious</h2>
-    <p>
-      Use the homepage to make the next action clear, whether that is joining Discord, reading
-      updates, or checking server requirements.
-    </p>
-  </a>
+  <div class="home-brief-side brief-rail-list" aria-label="Development utilities">
+    <div class="brief-rail">
+      <strong>Read First</strong>
+      <span>Point to the first page that should be reviewed before anything else.</span>
+    </div>
+    <div class="brief-rail">
+      <strong>Watch Next</strong>
+      <span>Use this second rail note for the follow-up action, update, or next testing target.</span>
+    </div>
+    <div class="brief-rail">
+      <strong>Need To Know</strong>
+      <span>Keep the last line short for the clearest one-line reminder or staff-facing note.</span>
+    </div>
+  </div>
 </section>
-
