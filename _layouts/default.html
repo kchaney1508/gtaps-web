@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" style="background:#0b0f14;">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b0f14">
   {% if page.title and page.title != "GTA:PS" %}
   <title>{{ page.title }} | GTA:PS</title>
   {% else %}
@@ -10,7 +11,7 @@
   {% endif %}
   <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}">
 </head>
-<body{% if page.page_id %} data-page="{{ page.page_id }}"{% endif %}>
+<body{% if page.page_id %} data-page="{{ page.page_id }}"{% endif %} style="background:#0b0f14;">
   <header class="site-header">
     <div class="container header-inner">
       <a class="brand" href="{{ '/' | relative_url }}" aria-label="GTA:PS home">
