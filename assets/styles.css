@@ -787,6 +787,29 @@ main.container > h1 {
   margin: 0 0 0.85rem;
 }
 
+.detail-body img,
+.detail-body iframe {
+  max-width: 100%;
+  height: auto;
+}
+
+.detail-body pre {
+  max-width: 100%;
+  margin: 0 0 0.85rem;
+  padding: 0.85rem 0.95rem;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #111822;
+}
+
+.detail-body table {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 .detail-body > :last-child {
   margin-bottom: 0;
 }
@@ -824,9 +847,56 @@ main.container > h1 {
     padding-right: 1.25rem;
   }
 
+  .header-inner {
+    justify-content: center;
+  }
+
+  .brand {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .site-nav {
+    width: 100%;
+    justify-content: center;
+  }
+
   main.container {
     padding-top: 1.25rem;
     padding-bottom: 2rem;
+  }
+
+  body[data-page="home"] main.container {
+    align-content: start;
+    padding-top: 1.25rem;
+    padding-bottom: 2rem;
+  }
+
+  .hero,
+  .detail-view,
+  .status,
+  .home-panel,
+  .home-brief {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 759px) {
+  .hero-home,
+  .home-brief {
+    gap: 0.9rem;
+  }
+
+  .home-panel {
+    height: auto;
+  }
+
+  .home-stack {
+    align-content: stretch;
+  }
+
+  .detail-back {
+    width: 100%;
   }
 }
 
@@ -882,6 +952,79 @@ main.container > h1 {
 
   .brand-logo--desktop {
     display: block;
+  }
+}
+
+@media (max-width: 560px) {
+  .site-header .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .header-inner {
+    padding: 0.85rem 0;
+  }
+
+  .site-nav {
+    gap: 0.35rem;
+  }
+
+  .site-nav a {
+    padding: 0.35rem 0.45rem;
+    font-size: 0.95rem;
+  }
+
+  .hero-lead {
+    font-size: clamp(1.1rem, 5.8vw, 1.35rem);
+  }
+
+  .hero-support,
+  .home-brief-message {
+    font-size: 0.94rem;
+  }
+
+  .dispatch-widget {
+    padding: 0.9rem;
+  }
+
+  .dispatch-head {
+    align-items: stretch;
+  }
+
+  .dispatch-head .button-compact {
+    width: 100%;
+    text-align: center;
+  }
+
+  .dispatch-intro {
+    max-width: none;
+  }
+
+  .dispatch-title {
+    font-size: 1.05rem;
+  }
+
+  .brief-metric,
+  .brief-note-strip {
+    padding: 0.8rem 0.85rem;
+  }
+
+  .brief-rail {
+    padding: 0.85rem 0 0.85rem 0.9rem;
+  }
+
+  .brief-rail::before {
+    top: 0.32rem;
+    bottom: 0.32rem;
+    width: 3px;
+  }
+
+  .detail-page {
+    gap: 0.6rem;
+  }
+
+  .detail-view h1 {
+    font-size: clamp(1.4rem, 7vw, 1.7rem);
   }
 }
 
