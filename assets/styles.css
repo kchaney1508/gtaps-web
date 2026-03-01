@@ -694,6 +694,19 @@ main.container > h1 {
   margin-bottom: 0.16rem;
 }
 
+.home-brief--live .brief-metric,
+.home-brief--live .brief-note-strip {
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  text-align: center;
+}
+
+.home-brief--live .brief-note-strip strong,
+.home-brief--live .brief-note-strip span {
+  max-width: 48rem;
+}
+
 .actions {
   display: flex;
   flex-wrap: wrap;
