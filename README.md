@@ -1,133 +1,127 @@
-# GTA:PS Static Site (Jekyll)
+# GTA:PS Site
 
-Simple static website for GTA:PS (Grand Theft Auto Police Simulator), set up for GitHub Pages + custom domain `gtaps.site`.
+Simple Jekyll site for `gtaps.site`
 
-## File Structure
+> KC1508: This website was co-coded with CodeX. If you don't support the use of AI, I understand, but don't really care. Take a second to realize this is a simple gaming community and pouring hundreds of man hours into a website really just isn't worth my time. 
 
-```text
-/
-  _config.yml
-  Gemfile
-  index.html
-  404.html
-  CNAME
-  /assets/
-    styles.css
-    app.js
-  /_layouts/
-    default.html
-    detail.html
-    redirect.html
-  /_data/
-    redirects.yml
-  /_changelog/
-    <slug>.md
-  /_information/
-    <slug>.md
-  /changelog/
-    index.html
-  /information/
-    index.html
-  /discord/
-    index.html
-  /server/
-    index.html
-```
+## What Is In The Root
 
-## Add/Edit A Changelog Post
+- `_config.yml`: Jekyll config
+- `index.html`: homepage
+- `404.html`: fallback page that redirects home
+- `start.bat`: quickest local start command on Windows
+- `CNAME`: custom domain for GitHub Pages
+- `_site/`: generated output from Jekyll (do not edit)
 
-Create or edit a file in `_changelog/`.
+## Run It Locally
 
-Example: `_changelog/11-12-25.md`
+This project is meant to be previewed with Docker.
 
-```markdown
----
-title: Placeholder Update 11-12-25
-published_on: 2025-11-12
-summary: Placeholder summary
----
-Post body content goes here.
-```
+Requirements:
 
-Notes:
-- Filename is the slug (`11-12-25.md` -> `/changelog/11-12-25/`).
-- Use Markdown in the body.
-- `published_on` is optional. If omitted, the post is listed after dated posts.
-- Changelog list sorts newest `published_on` first, then undated posts last.
+- Docker Desktop installed
+- Docker Desktop running
 
-## Add/Edit An Information Page
+If Docker Desktop is not open and fully running, `start.bat` will fail.
 
-Create or edit a file in `_information/`.
+### Windows Quick Start
 
-Example: `_information/rules.md`
-
-```markdown
----
-title: Rules Placeholder
-summary: Placeholder summary
----
-Information page body goes here.
-```
-
-Notes:
-- Filename is the slug (`rules.md` -> `/information/rules/`).
-- Information list sorts alphabetically by title.
-
-## Add/Edit A Redirect
-
-1. Edit `_data/redirects.yml`.
-2. Add or update the key URL mapping.
-3. Ensure a matching page exists at `/<key>/index.html` with `redirect_key: <key>`.
-
-Current examples:
-- `/discord/` -> `discord`
-- `/server/` -> `server`
-
-## Local Development (Like GitHub Pages)
-
-### Option A: Ruby + Bundler
-
-1. Install Ruby + Bundler.
-2. Run:
-
-```bash
-bundle install
-bundle exec jekyll serve
-```
-
-3. Open `http://127.0.0.1:4000`.
-
-### Option B: Docker
-
-```bash
-docker run --rm -it -p 4000:4000 -v "$PWD:/srv/jekyll" --entrypoint jekyll jekyll/jekyll:4 serve --host 0.0.0.0 --port 4000 --watch
-```
-
-Then open `http://127.0.0.1:4000`.
-
-Windows `cmd.exe` helper:
+From the repo root, run:
 
 ```bat
 start.bat
 ```
 
-## GitHub Pages + Custom Domain Setup
+That starts Jekyll in Docker and serves the site at:
 
-1. Push repository to GitHub.
-2. In repo settings, open **Pages**.
-3. Set source to deploy from your main branch root.
-4. Set custom domain to `gtaps.site`.
-5. Keep `CNAME` in the repo with exactly:
+```text
+http://127.0.0.1:4000
+```
+
+Stop it with `Ctrl+C`.
+
+### What `start.bat` Runs
+
+```bat
+docker run --rm -it -p 4000:4000 -v "%cd%:/srv/jekyll" --entrypoint jekyll jekyll/jekyll:4 serve --host 0.0.0.0 --port 4000 --watch
+```
+
+## Edit Content
+
+### Changelog
+
+Add or edit files in:
+
+```text
+_changelog/
+```
+
+Example:
+
+```text
+_changelog/11-12-25.md
+```
+
+Basic format:
+
+```markdown
+---
+title: Example Update
+published_on: 2026-03-01
+summary: Short summary text
+---
+Main post content goes here.
+```
+
+### Information Pages
+
+Add or edit files in:
+
+```text
+_information/
+```
+
+Example:
+
+```text
+_information/rules.md
+```
+
+Basic format:
+
+```markdown
+---
+title: Example Page
+summary: Short summary text
+---
+Main page content goes here.
+```
+
+### Redirects
+
+Edit:
+
+```text
+_data/redirects.yml
+```
+
+Then make sure a matching folder exists for the short link, such as:
+
+- `discord/index.html`
+- `server/index.html`
+
+## Main Site Folders
+
+- `assets/`: CSS, JS, images, audio references
+- `_layouts/`: shared page layouts
+- `changelog/`: changelog list page
+- `information/`: information list page
+- `discord/` and `server/`: redirect pages
+
+## Deploy
+
+Push the repo to GitHub Pages and keep the `CNAME` file in place so the custom domain stays set to:
 
 ```text
 gtaps.site
 ```
-
-6. Configure DNS for `gtaps.site` to GitHub Pages.
-7. Wait for DNS + certificate provisioning.
-
-## Routing Behavior
-
-- Real pages exist for `/changelog/<slug>/` and `/information/<slug>/` via Jekyll collections.
-- Real redirect pages exist for `/discord/` and `/server/`.
-- Unknown routes load `404.html`, which redirects to homepage.
